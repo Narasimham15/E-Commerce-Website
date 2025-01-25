@@ -1,0 +1,61 @@
+// Initialize an empty array to store cart items or get it from localStorage
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// Function to update the cart count in the navigation (Main Page)
+function updateCartCount() {
+    const cartCount = document.getElementById("cart-count");
+    cartCount.textContent = cart.length;
+}
+
+// Add event listeners to each "Add to Cart" button (Main Page)
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const productName = button.getAttribute('data-name');
+        const productPrice = parseInt(button.getAttribute('data-price'));
+
+        // Add product to cart
+        cart.push({ name: productName, price: productPrice });
+
+        // Save the updated cart to localStorage
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // Update cart count in the header
+        updateCartCount();
+    });
+});
+
+// Initial cart count update (Main Page)
+updateCartCount();
+
+// Function to display cart items (Cart Page)
+function displayCart() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+
+    // If the cart is empty
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = "<p>Your cart is empty!</p>";
+        cartTotal.textContent = "0";
+        return;
+    }
+
+    // Display the cart items
+    cartItemsContainer.innerHTML = ''; // Clear previous cart items
+    let total = 0;
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `<p>${item.name} - ₹${item.price}</p>`;
+        cartItemsContainer.appendChild(cartItem);
+        total += item.price;
+    });
+
+    // Update total price
+    cartTotal.textContent = total;
+}
+
+// Call displayCart() on Cart Page to load cart items
+if (document.getElementById('cart-items')) {
+    displayCart();
+}
