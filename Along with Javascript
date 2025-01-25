@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce Store</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo h1 {
+            font-size: 24px;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Main Section */
+        .main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .main h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        /* Product Container */
+        .product-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Common Styling for Product Cards */
+        .product-card {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 350px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: green;
+        }
+
+        .product-card button {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: auto;
+        }
+
+        .product-card button:hover {
+            background-color: #555;
+        }
+
+        /* Cart Button and Cart Details */
+        .cart-info {
+            margin-top: 30px;
+        }
+
+        #cart-button {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #cart-button:hover {
+            background-color: #555;
+        }
+
+        #cart-details {
+            margin-top: 20px;
+            display: none;
+        }
+
+        #cart-details ul {
+            list-style-type: none;
+        }
+
+        #cart-details li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>ShopNow</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Cart</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <section class="main">
+        <h2>Featured Products</h2>
+        <div class="product-container">
+            <div class="product-card">
+                <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQ167R0kMSFaJXcbyffXBNR7rg8J35_wsJw65nP5vuhi6CXTlzQqc0xDU1vqAfMXMhG0ms9nz4Bf1pvREPm8O1MytHeQFxeivBF17yKO3leAX9MbmA2okB-&usqp=CAE"
+                    alt="Product 1">
+                <h3>Redmi 12 (6GB RAM, 128GB, Pastel Blue)</h3>
+                <p>₹9,999.00</p>
+                <button class="add-to-cart" data-name="Redmi 12 (6GB RAM, 128GB, Pastel Blue)" data-price="9999">Add to
+                    Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTfDdRiMAyi6VO9dIoji43tBs99zPRCKoUte4lMtpJ3wd3oPXGv2ieihNKxGcdterkUjU1L3TvRGXj-bBiIa4MNCvtepkfcrLcKl8sKjLdxNILAEc1E9cX2bw&usqp=CAE"
+                    alt="Product 2">
+                <h3>iQOO 12 5G (Legend, 12GB RAM, 256GB Storage)</h3>
+                <p>₹45,999.00</p>
+                <button class="add-to-cart" data-name="iQOO 12 5G" data-price="45999">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQEvAsPyi79phZojG14ldJE7KnM7FtXvO7DIdAh7oDV5pDAA9Osg0UcGepf853et9S7V3AtmbuJXc0swycnF1u-sgW6soZX92pRlRwUOADoK7FDGW5UM_ZC&usqp=CAE"
+                    alt="Product 3">
+                <h3>CMF Phone 1 5G 128 GB (Black, 8 GB RAM)</h3>
+                <p>₹15,990.00</p>
+                <button class="add-to-cart" data-name="CMF Phone 1 5G" data-price="15990">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTmeVIxj_Z9g1aKGzxtHd4CYhY0bPoMXJIUYrOyAOqXSdDMv5tky_YPVK1QLwgf1ffm4-N_7XATqQBr4GqbAIJstmJNaRWd9re6umu_YfPiprbg3gFdH1LI5g&usqp=CAE"
+                    alt="Product 4">
+                <h3>Motorola Edge 50 Ultra 5G 512 GB</h3>
+                <p>₹49,999.00</p>
+                <button class="add-to-cart" data-name="Motorola Edge 50 Ultra 5G" data-price="49999">Add to
+                    Cart</button>
+            </div>
+        </div>
+
+        <!-- Cart Button and Cart Details -->
+        <div class="cart-info">
+            <button id="cart-button">View Cart (<span id="cart-count">0</span>)</button>
+            <div id="cart-details">
+                <h3>Cart Items</h3>
+                <ul id="cart-items-list"></ul>
+                <p><strong>Total: ₹<span id="cart-total">0</span></strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 ShopNow. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Initialize an empty array to store cart items
+        let cart = [];
+
+        // Select all the "Add to Cart" buttons
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+        // Function to update the cart count and total price
+        function updateCart() {
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+            const cartItemsList = document.getElementById('cart-items-list');
+
+            // Update cart count
+            cartCount.textContent = cart.length;
+
+            // Calculate and update the total price
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            cartTotal.textContent = total;
+
+            // Display the cart items in the cart details section
+            cartItemsList.innerHTML = ''; // Clear current list
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - ₹${item.price}`;
+                cartItemsList.appendChild(listItem);
+            });
+        }
+
+        // Add event listeners to each "Add to Cart" button
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Get product name and price from data attributes
+                const productName = button.getAttribute('data-name');
+                const productPrice = parseInt(button.getAttribute('data-price'));
+
+                // Add the item to the cart
+                cart.push({ name: productName, price: productPrice });
+
+                // Update the cart details
+                updateCart();
+            });
+        });
+
+        // Toggle the cart details view when the "View Cart" button is clicked
+        document.getElementById('cart-button').addEventListener('click', () => {
+            const cartDetails = document.getElementById('cart-details');
+            cartDetails.style.display = cartDetails.style.display === 'none' ? 'block' : 'none';
+        });
+    </script>
+
+</body>
+
+</html>
